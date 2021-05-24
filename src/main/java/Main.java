@@ -14,7 +14,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int select;
         do {
-            System.out.println("[0]wyjscie\t\t[1]]dodaj wizyte\t\t[2]usun wizyte\t\t[3]znajdz po kluczu\t\t[4]aktualizuj wizytet\\t[5]zwroc po tytule(query)\\[6]srednia cena naprawy dla danej marki\\t\"");
+            System.out.println("[0]wyjscie\t\t[1]]dodaj wizyte\t\t[2]usun wizyte\t\t[3]znajdz po kluczu\t\t[4]aktualizuj wizytet\t\t[5]zwroc po tytule(query)\t\t" +
+                    "[6]srednia cena naprawy dla danej marki\\t\"");
             select = scanner.nextInt();
             switch (select) {
                 case 0:

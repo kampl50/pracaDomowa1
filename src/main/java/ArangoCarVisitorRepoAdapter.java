@@ -56,9 +56,12 @@ public final class ArangoCarVisitorRepoAdapter implements ArangoServicePort<CarV
     @Override
     public void updateDocument(String key, CarVisit carVisit) {
         try {
-            arangoDB.db(databaseName).collection(collectionName).getDocument(key, BaseDocument.class).updateAttribute("title", carVisit.getTitle());
-            arangoDB.db(databaseName).collection(collectionName).getDocument(key, BaseDocument.class).updateAttribute("price", carVisit.getPrice());
-            arangoDB.db(databaseName).collection(collectionName).getDocument(key, BaseDocument.class).updateAttribute("mark", carVisit.getMark());
+
+            BaseDocument updatedDocument = arangoDB.db(databaseName).collection(collectionName).getDocument(key, BaseDocument.class);
+            updatedDocument.updateAttribute("title", carVisit.getTitle());
+            updatedDocument.updateAttribute("price", carVisit.getPrice());
+            updatedDocument.updateAttribute("mark", carVisit.getMark());
+            arangoDB.db(databaseName).collection(collectionName).updateDocument(key, updatedDocument);
         } catch (ArangoDBException e) {
             System.err.println("Failed to update document. " + e.getMessage());
         }
